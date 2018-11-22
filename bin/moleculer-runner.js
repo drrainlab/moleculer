@@ -199,7 +199,7 @@ function mergeOptions() {
 				obj[key] = overwriteFromEnv(obj[key], (prefix ? prefix + "_" : "") + key);
 		});
 
-		const moleculerPrefix = "MOL_";
+		const moleculerPrefix = "MOLECULER_";
 		Object.keys(process.env)
 			.filter(key => key.startsWith(moleculerPrefix))
 			.map(key => ({
@@ -208,7 +208,7 @@ function mergeOptions() {
 			}))
 			.forEach(variable => {
 				const dotted = variable.withoutPrefix
-					.split("__")
+					.split("_")
 					.map(level => level.toLocaleLowerCase())
 					.map(level =>
 						level
